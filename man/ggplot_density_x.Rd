@@ -2,22 +2,22 @@
 % Please edit documentation in R/ggplot_density_x.R
 \name{ggplot_density_x}
 \alias{ggplot_density_x}
-\title{ggplot a kernel density, with by-group flexibility and optional print-to-pdf.}
+\title{Quickly ggplot a kernel density estimator, with optional print-to-pdf.}
 \usage{
-ggplot_density_x(df, varname_x, varname_grp = NULL, path_filename_print = NULL)
+ggplot_density_x(df, varname_x, ..., path_filename_print = NULL)
 }
 \arguments{
 \item{df}{Data frame with plotting data.}
 
-\item{varname_x}{Variable name whose distribution will be plotted.}
+\item{varname_x}{Variable name (as character string) whose distribution will be plotted.}
 
-\item{varname_grp}{Variable name used for grouping.}
+\item{...}{Other named arguments -- character string input values -- passing to ggplot2's aesthetics.}
 
 \item{path_filename_print}{Optional pdf print file}
 }
 \value{
-ggplot plot object.
+ggplot plot object..
 }
 \description{
-ggplot a kernel density, with by-group flexibility and optional print-to-pdf.
+Quickly ggplot a kernel density estimator, with optional print-to-pdf.
 }

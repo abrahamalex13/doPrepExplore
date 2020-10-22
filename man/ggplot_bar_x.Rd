@@ -7,20 +7,20 @@
 ggplot_bar_x(
   df,
   varname_x,
-  varname_grp = NULL,
-  order_x = T,
-  units_share = F,
+  ...,
+  order_x = TRUE,
+  units_share = FALSE,
   path_filename_print = NULL
 )
 }
 \arguments{
 \item{df}{Data frame with plotting data.}
 
-\item{varname_x}{Variable name whose distribution will be plotted.}
+\item{varname_x}{Variable name (as character string) whose distribution will be plotted.}
 
-\item{varname_grp}{Variable name used for grouping.}
+\item{...}{Other named arguments -- character string input values -- passing to ggplot2's aesthetics.}
 
-\item{order_x}{Variable values ordered along axis by frequency.}
+\item{order_x}{Variable values are ordered along axis by frequency.}
 
 \item{units_share}{Vertical axis units are in terms of within-x value share.}
 

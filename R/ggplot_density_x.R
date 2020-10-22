@@ -1,34 +1,19 @@
-#' ggplot a kernel density, with by-group flexibility and optional print-to-pdf.
+#' Quickly ggplot a kernel density estimator, with optional print-to-pdf.
 #'
 #' @param df Data frame with plotting data.
-#' @param varname_x Variable name whose distribution will be plotted.
-#' @param varname_grp Variable name used for grouping.
+#' @param varname_x Variable name (as character string) whose distribution will be plotted.
+#' @param ... Other named arguments -- character string input values -- passing to ggplot2's aesthetics.
 #' @param path_filename_print Optional pdf print file
 #'
-#' @return ggplot plot object.
+#' @return ggplot plot object..
 
-ggplot_density_x <- function(df, varname_x, varname_grp = NULL, path_filename_print = NULL) {
+ggplot_density_x <- function(df, varname_x, ..., path_filename_print = NULL) {
 
   title <- paste("Density: ", varname_x, sep = "")
-  varname_x.sym <- rlang::sym(varname_x)
 
-
-  if (is.null(varname_grp)) {
-
-    p <- ggplot(df) +
-      geom_density(aes(!!varname_x.sym)) +
-      labs(title = title)
-
-  } else if (!is.null(varname_grp)) {
-
-    varname_grp.sym <- rlang::sym(varname_grp)
-
-    p <- ggplot(df) +
-      geom_density(aes(!!varname_x.sym, group = !!varname_grp.sym, color = !!varname_grp.sym)) +
-      labs(title = title)
-
-  }
-
+  p <- ggplot(df) +
+    geom_density(aes_string(x = varname_x, ...)) +
+    labs(title = title)
 
   if (!is.null(path_filename_print)) {
 
