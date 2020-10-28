@@ -8,7 +8,8 @@ consolidate_sparse_other_cat(
   df,
   varname_cat,
   threshold,
-  value_consol = "OTHER"
+  value_consol = "OTHER",
+  construct_indic_other = TRUE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ consolidate_sparse_other_cat(
 \item{threshold}{Minimum share of observations with categorical variable value \emph{v}, if \emph{v} to be kept.}
 
 \item{value_consol}{Categorical variable \emph{level} into which sparsely-observed values will be consolidated.}
+
+\item{construct_indic_other}{Does construct an indicator variable strictly to convey, 'is_other'.}
 }
 \value{
 Original data frame, with new consolidated categorical variable ('_consol' suffix).
