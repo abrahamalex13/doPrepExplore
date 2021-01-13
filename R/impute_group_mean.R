@@ -1,6 +1,6 @@
 #' Imputation using by-group mean.
 #'
-#' @param df Data frame with missing values, and those values for imputation calculations.
+#' @param x Data frame with missing values, and those values for imputation calculations.
 #' @param varnames_impute Vector of variable name(s) with missing values to be imputed.
 #' @param varnames_grp Vector of variable name(s) used for grouping.
 #' @param pre_df_means Existing data frame of by-group means, if available.
@@ -12,14 +12,13 @@
 #' }
 #'
 
-impute_group_mean <- function(df, varnames_impute, varnames_grp, pre_df_means = NULL) {
+impute_group_mean <- function(x, varnames_impute, varnames_grp, pre_df_means = NULL) {
 
   if (is.null(pre_df_means)) {
 
-  #construct by-group means df
   varnames_grp.syms <- rlang::syms(varnames_grp)
 
-  df_means <- df %>%
+  df_means <- x %>%
     group_by(!!!varnames_grp.syms) %>%
     dplyr::summarize(
       across(varnames_impute,
@@ -32,22 +31,22 @@ impute_group_mean <- function(df, varnames_impute, varnames_grp, pre_df_means = 
 
   #populate missing values ----
 
-  df <- left_join(df, df_means)
+  x <- left_join(x, df_means)
   M <- is.na(df[, varnames_impute])
   for (varname_i in varnames_impute) {
 
     varname_mean_i <- paste(varname_i, "_mean", sep = "")
-    df[M[, varname_i], varname_i] <- df[M[, varname_i], varname_mean_i]
+    x[M[, varname_i], varname_i] <- x[M[, varname_i], varname_mean_i]
 
   }
-  df <- df %>%
+  x <- x %>%
     dplyr::select(-ends_with(c("_mean", "_n")))
 
   # ----
 
 
-  if (is.null(pre_df_means)) out <- list("df_means" = df_means, "M" = M, "df_impute" = df)
-  else out <- list("M" = M, "df_impute" = df)
+  if (is.null(pre_df_means)) out <- list("df_means" = df_means, "M" = M, "df_impute" = x)
+  else out <- list("M" = M, "df_impute" = x)
 
   return(out)
 

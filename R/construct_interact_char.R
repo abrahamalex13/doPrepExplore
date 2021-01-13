@@ -2,6 +2,9 @@
 #'
 #' @param df Data frame with character variables to be interacted.
 #' @param varnames_interact Vector of character variable names.
+#'
+#' @export
+#'
 #' @return Original data frame, with new interacted (pasted) variable.
 
 

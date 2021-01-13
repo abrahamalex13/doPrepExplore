@@ -4,10 +4,10 @@
 \alias{impute_group_mean}
 \title{Imputation using by-group mean.}
 \usage{
-impute_group_mean(df, varnames_impute, varnames_grp, pre_df_means = NULL)
+impute_group_mean(x, varnames_impute, varnames_grp, pre_df_means = NULL)
 }
 \arguments{
-\item{df}{Data frame with missing values, and those values for imputation calculations.}
+\item{x}{Data frame with missing values, and those values for imputation calculations.}
 
 \item{varnames_impute}{Vector of variable name(s) with missing values to be imputed.}
 
