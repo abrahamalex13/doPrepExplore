@@ -2,11 +2,12 @@
 #'
 #' @param df A data frame.
 #' @param varnames_group Character name(s) of variables for frequency tabulation.
+#' @param compute_shares TRUE/FALSE, do compute group-wise frequencies as fraction of overall.
 #'
 #' @return A data frame with summary frequencies.
 #' @export
 
-tabulate_frequency_overall <- function(df, varnames_group) {
+tabulate_frequency_overall <- function(df, varnames_group, compute_shares = TRUE) {
 
   summ <- df %>%
     group_by(!!!rlang::syms(varnames_group)) %>%

@@ -4,12 +4,14 @@
 \alias{tabulate_frequency_overall}
 \title{Tabulate frequencies for grouping variable(s).}
 \usage{
-tabulate_frequency_overall(df, varnames_group)
+tabulate_frequency_overall(df, varnames_group, compute_shares = TRUE)
 }
 \arguments{
 \item{df}{A data frame.}
 
 \item{varnames_group}{Character name(s) of variables for frequency tabulation.}
+
+\item{compute_shares}{TRUE/FALSE, do compute group-wise frequencies as fraction of overall.}
 }
 \value{
 A data frame with summary frequencies.
